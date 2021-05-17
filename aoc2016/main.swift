@@ -7,5 +7,7 @@
 
 import Foundation
 
-print("Hello, World!")
+let projectFolder = "OneDrive/code/aoc2016"
+
+day01()
 
