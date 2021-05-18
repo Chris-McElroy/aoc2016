@@ -320,3 +320,37 @@ public extension BinaryInteger {
     var isOdd: Bool { self % 2 == 1 }
 }
 
+struct C2: Equatable, Hashable, AdditiveArithmetic {
+    var x: Int
+    var y: Int
+    
+    static var zero: C2 = C2(x: 0, y: 0)
+    
+    mutating func rotateLeft() {
+        let tempX = x
+        x = -y
+        y = tempX
+    }
+    
+    mutating func rotateRight() {
+        let tempX = x
+        x = y
+        y = -tempX
+    }
+    
+    mutating func rotate(left: Bool) {
+        left ? rotateLeft() : rotateRight()
+    }
+    
+    func length() -> Int {
+        abs(x) + abs(y)
+    }
+    
+    static func + (lhs: C2, rhs: C2) -> C2 {
+        C2(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+    }
+    
+    static func - (lhs: C2, rhs: C2) -> C2 {
+        C2(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+    }
+}
