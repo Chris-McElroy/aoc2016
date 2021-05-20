@@ -10,5 +10,6 @@ import Foundation
 // change to the project's file path before running
 let projectFolder = "OneDrive/code/aoc2016"
 
-day01()
+//day01()
+day02()
 
