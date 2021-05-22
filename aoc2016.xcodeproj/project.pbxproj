@@ -11,6 +11,7 @@
 		1EBD9D8E2652BD5F0024A8C0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD9D8D2652BD5F0024A8C0 /* main.swift */; };
 		1EBD9D952652BD840024A8C0 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD9D942652BD840024A8C0 /* helpers.swift */; };
 		1EBD9D972652BDBA0024A8C0 /* day01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD9D962652BDBA0024A8C0 /* day01.swift */; };
+		1ED0DB6F2655F12A00DCDE87 /* day03.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED0DB6E2655F12A00DCDE87 /* day03.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,8 @@
 		1EBD9D962652BDBA0024A8C0 /* day01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day01.swift; sourceTree = "<group>"; };
 		1EBD9D982652BDDD0024A8C0 /* input01 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input01; sourceTree = "<group>"; };
 		1EBD9D992652BDEC0024A8C0 /* input02 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input02; sourceTree = "<group>"; };
+		1ED0DB6E2655F12A00DCDE87 /* day03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day03.swift; sourceTree = "<group>"; };
+		1ED0DB702655F13600DCDE87 /* input03 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input03; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,7 @@
 				1EBD9D8D2652BD5F0024A8C0 /* main.swift */,
 				1EBD9D962652BDBA0024A8C0 /* day01.swift */,
 				1E6F2EBB2655E1CF00550B9E /* day02.swift */,
+				1ED0DB6E2655F12A00DCDE87 /* day03.swift */,
 				1EBD9D942652BD840024A8C0 /* helpers.swift */,
 				1EBD9D9A2652BDFE0024A8C0 /* input */,
 			);
@@ -79,6 +83,7 @@
 			children = (
 				1EBD9D982652BDDD0024A8C0 /* input01 */,
 				1EBD9D992652BDEC0024A8C0 /* input02 */,
+				1ED0DB702655F13600DCDE87 /* input03 */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 			files = (
 				1EBD9D8E2652BD5F0024A8C0 /* main.swift in Sources */,
 				1EBD9D952652BD840024A8C0 /* helpers.swift in Sources */,
+				1ED0DB6F2655F12A00DCDE87 /* day03.swift in Sources */,
 				1E6F2EBC2655E1CF00550B9E /* day02.swift in Sources */,
 				1EBD9D972652BDBA0024A8C0 /* day01.swift in Sources */,
 			);
