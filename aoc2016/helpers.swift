@@ -224,6 +224,20 @@ public extension StringProtocol {
     }
 }
 
+public extension Character {
+    static func +(lhs: Character, rhs: Int) -> Character {
+        if lhs.isLetter {
+            let aVal: UInt32 = lhs.isUppercase ? 65 : 97
+            if let value = lhs.unicodeScalars.first?.value {
+                if let scalar = UnicodeScalar((value - aVal + UInt32(rhs)) % 26 + aVal) {
+                    return Character(scalar)
+                }
+            }
+        }
+        return lhs
+    }
+}
+
 extension RangeReplaceableCollection {
     // from https://stackoverflow.com/questions/25162500/apple-swift-generate-combinations-with-repetition
     // I should use rangereplacablecollection for everything i think
