@@ -6,9 +6,36 @@
 //
 
 import Foundation
+import CryptoKit
 
 func day05() {
-    let input = inputLines(5)
+    let input = inputLines(5)[0]
     
-    print(input)
+    var a1 = ""
+    var a2Array = Array("________")
+    var n = 1
+    
+    while n < 100000000 {
+        let hash = Insecure.MD5.hash(data: (input+String( n)).data(using: .utf8)!).description.dropFirst(12)
+
+        if hash.hasPrefix("00000") {
+            if a1.count < 8 {
+                a1.append(hash[5])
+            }
+            
+            let chr6 = Int(String(hash[5]), radix: 16)!
+            
+            if chr6 < 8 && a2Array[chr6] == "_" {
+                a2Array[chr6] = hash[6]
+                if !a2Array.contains("_") { break }
+            }
+        }
+        
+        n += 1
+    }
+    
+    let a2 = String(a2Array)
+    
+    print(a1, a2)
 }
+// d4cd2ee1 f2c730e5
