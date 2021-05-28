@@ -13,8 +13,8 @@ func day02() {
     var a2 = ""
     let pad1 = Array(["123","456","789"].reversed())
     let pad2 = Array(["001","0234","56789","0ABC","00D"].reversed())
-    var loc1 = C2(x: 1, y: 1)
-    var loc2 = C2(x: 0, y: 2)
+    var loc1 = C2(1, 1)
+    var loc2 = C2(0, 2)
     
     for line in input {
         for c in line {
