@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E40133A265C4D3C0064BDDC /* day05.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E401339265C4D3C0064BDDC /* day05.swift */; };
+		1E4E189B26657ECC007D48EE /* day08.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4E189A26657ECC007D48EE /* day08.swift */; };
 		1E6F2EBC2655E1CF00550B9E /* day02.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6F2EBB2655E1CF00550B9E /* day02.swift */; };
 		1E7AD231265892810038DD15 /* day04.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7AD230265892810038DD15 /* day04.swift */; };
 		1EBD9D8E2652BD5F0024A8C0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBD9D8D2652BD5F0024A8C0 /* main.swift */; };
@@ -33,6 +34,8 @@
 /* Begin PBXFileReference section */
 		1E401339265C4D3C0064BDDC /* day05.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day05.swift; sourceTree = "<group>"; };
 		1E40133B265C4D5B0064BDDC /* input05 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input05; sourceTree = "<group>"; };
+		1E4E189A26657ECC007D48EE /* day08.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day08.swift; sourceTree = "<group>"; };
+		1E4E189E26657EF8007D48EE /* input08 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input08; sourceTree = "<group>"; };
 		1E6F2EBB2655E1CF00550B9E /* day02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day02.swift; sourceTree = "<group>"; };
 		1E7AD230265892810038DD15 /* day04.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = day04.swift; sourceTree = "<group>"; };
 		1E7AD232265892AD0038DD15 /* input04 */ = {isa = PBXFileReference; lastKnownFileType = text; path = input04; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 				1E401339265C4D3C0064BDDC /* day05.swift */,
 				1EDE248E266059D600B10F62 /* day06.swift */,
 				1ECF7CFF266180A600C8A884 /* day07.swift */,
+				1E4E189A26657ECC007D48EE /* day08.swift */,
 				1EBD9D942652BD840024A8C0 /* helpers.swift */,
 				1EBD9D9A2652BDFE0024A8C0 /* input */,
 			);
@@ -104,6 +108,7 @@
 				1E40133B265C4D5B0064BDDC /* input05 */,
 				1EDE2490266059EF00B10F62 /* input06 */,
 				1ECF7D01266180C300C8A884 /* input07 */,
+				1E4E189E26657EF8007D48EE /* input08 */,
 			);
 			path = input;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			files = (
 				1EBD9D8E2652BD5F0024A8C0 /* main.swift in Sources */,
 				1EBD9D952652BD840024A8C0 /* helpers.swift in Sources */,
+				1E4E189B26657ECC007D48EE /* day08.swift in Sources */,
 				1EDE248F266059D600B10F62 /* day06.swift in Sources */,
 				1E7AD231265892810038DD15 /* day04.swift in Sources */,
 				1ED0DB6F2655F12A00DCDE87 /* day03.swift in Sources */,

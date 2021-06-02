@@ -16,5 +16,6 @@ let projectFolder = "OneDrive/code/aoc2016"
 //day04()
 //day05()
 //day06()
-day07()
+//day07()
+day08()
 
