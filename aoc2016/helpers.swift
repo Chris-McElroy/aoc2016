@@ -7,6 +7,7 @@
 
 import Foundation
 import Accelerate
+import CryptoKit
 
 // input functions //
 
@@ -223,6 +224,26 @@ public extension StringProtocol {
     func isin(_ string: Self?) -> Bool {
         return string?.contains(self) == true
     }
+    
+    func repititions(n: Int) -> [Character] {
+        var last: Character = " "
+        var count = 0
+        var output: [Character] = []
+        
+        for c in self {
+            if last == c {
+                count += 1
+                if count == n {
+                    output.append(c)
+                }
+            } else {
+                last = c
+                count = 1
+            }
+        }
+        
+        return output
+    }
 }
 
 public extension Character {
@@ -423,4 +444,8 @@ struct C3: Equatable, Hashable, AdditiveArithmetic {
     static func - (lhs: C3, rhs: C3) -> C3 {
         C3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z)
     }
+}
+
+func MD5(of string: String) -> String {
+    String(Insecure.MD5.hash(data: (string).data(using: .utf8)!).description.dropFirst(12))
 }
