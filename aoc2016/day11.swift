@@ -66,7 +66,6 @@ func day11() {
     var history: Set<[Set<Int>]> = [start]
     var allSetups: Set<[Set<Int>]> = [start]
 
-
     w: while a1 < 1000 {
         a1 += 1
 
