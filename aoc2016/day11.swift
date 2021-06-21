@@ -59,40 +59,41 @@ func day11() {
         return true
     }
     
-    var history: Set<[Set<Int>]> = [start]
-    var allSetups: Set<[Set<Int>]> = [start]
-    
     var a1 = 0
     var a2: Int { a1 + 24 } // this works in all the examples I tested, it's possible it doesn't for you, in which case you'll need to run the full example
     // that took 30 min for me, sorry about that
     
+    var history: Set<[Set<Int>]> = [start]
+    var allSetups: Set<[Set<Int>]> = [start]
+
+
     w: while a1 < 1000 {
         a1 += 1
-        
+
         var newSetups: Set<[Set<Int>]> = []
-        
+
         for setup in allSetups {
             let elevator = setup[0].first!
             let floor = setup[elevator]
-            
+
             for a in floor {
                 for b in floor {
                     for nextElevator in [[0],[2],[1,3],[2,4],[3]][elevator] {
                         let inElevator = Set([a,b])
                         let departureFloor = floor.subtracting(inElevator)
                         let arrivalFloor = setup[nextElevator].union(inElevator)
-                        
+
                         if valid(inElevator) && valid(departureFloor) && valid(arrivalFloor) {
                             var newSetup = setup
                             newSetup[elevator] = departureFloor
                             newSetup[0] = [nextElevator]
                             newSetup[nextElevator] = arrivalFloor
                             newSetup.append([a, b, nextElevator*100 + (elevator-nextElevator)])
-                            
-                            if newSetup[1,4].joined().isEmpty {
+
+                            if newSetup[1].isEmpty && newSetup[2].isEmpty && newSetup[3].isEmpty {
                                 break w
                             }
-                            
+
                             if history.insert(Array(newSetup[0,5])).inserted {
                                 newSetups.insert(newSetup)
                             }
@@ -101,7 +102,7 @@ func day11() {
                 }
             }
         }
-        
+
         allSetups = newSetups
     }
     

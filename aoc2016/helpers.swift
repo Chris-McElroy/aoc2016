@@ -367,10 +367,10 @@ struct C2: Equatable, Hashable, AdditiveArithmetic {
     
     static let zeroAdjacents = [(-1,0),(0,-1),(0,1),(1,0)]
     static let zeroNeighbors = [(-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)]
-    lazy var adjacents: [C2] = C2.zeroAdjacents.map({ C2(x + $0.0, y + $0.1) })
-    lazy var neighbors: [C2] = C2.zeroNeighbors.map({ C2(x + $0.0, y + $0.1) })
-    lazy var adjacentsWithSelf: [C2] = C2.zeroAdjacents.map({ C2(x + $0.0, y + $0.1) }) + [self]
-    lazy var neighborsWithSelf: [C2] = C2.zeroNeighbors.map({ C2(x + $0.0, y + $0.1) }) + [self]
+    var adjacents: [C2] { C2.zeroAdjacents.map({ C2(x + $0.0, y + $0.1) }) }
+    var neighbors: [C2] { C2.zeroNeighbors.map({ C2(x + $0.0, y + $0.1) }) }
+    var adjacentsWithSelf: [C2] { C2.zeroAdjacents.map({ C2(x + $0.0, y + $0.1) }) + [self] }
+    var neighborsWithSelf: [C2] { C2.zeroNeighbors.map({ C2(x + $0.0, y + $0.1) }) + [self] }
     
     static var zero: C2 = C2(0, 0)
     
@@ -422,10 +422,10 @@ struct C3: Equatable, Hashable, AdditiveArithmetic {
     static let zeroNeighbors = [(-1,-1,-1),(-1,-1,0),(-1,-1,1),(-1,0,-1),(-1,0,0),(-1,0,1),(-1,1,-1),(-1,1,0),(-1,1,1),
                                 (0,-1,-1),(0,-1,0),(0,-1,1),(0,0,-1),(0,0,1),(0,1,-1),(0,1,0),(0,1,1),
                                 (1,-1,-1),(1,-1,0),(1,-1,1),(1,0,-1),(1,0,0),(1,0,1),(1,1,-1),(1,1,0),(1,1,1)]
-    lazy var adjacents: [C3] = C3.zeroAdjacents.map({ C3(x + $0.0, y + $0.1, z + $0.2) })
-    lazy var neighbors: [C3] = C3.zeroNeighbors.map({ C3(x + $0.0, y + $0.1, z + $0.2) })
-    lazy var adjacentsWithSelf: [C3] = C3.zeroAdjacents.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) + [self]
-    lazy var neighborsWithSelf: [C3] = C3.zeroNeighbors.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) + [self]
+    var adjacents: [C3] { C3.zeroAdjacents.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) }
+    var neighbors: [C3] { C3.zeroNeighbors.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) }
+    var adjacentsWithSelf: [C3] { C3.zeroAdjacents.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) + [self] }
+    var neighborsWithSelf: [C3] { C3.zeroNeighbors.map({ C3(x + $0.0, y + $0.1, z + $0.2) }) + [self] }
     
     static var zero: C3 = C3(0, 0, 0)
     
@@ -448,4 +448,27 @@ struct C3: Equatable, Hashable, AdditiveArithmetic {
 
 func MD5(of string: String) -> String {
     String(Insecure.MD5.hash(data: (string).data(using: .utf8)!).description.dropFirst(12))
+}
+
+func bfs<T>(for solution: ((T, Int, Set<T>) -> Bool) = { _,_,_ in false }, from start: Set<T>, with search: (T) -> [T], while valid: (Int, Set<T>) -> Bool) {
+    var steps = 0
+    var found: Set<T> = []
+    var current: Set<T> = start
+    
+    w: while valid(steps, found) {
+        steps += 1
+        var next: Set<T> = []
+        
+        for a in current {
+            for b in search(a) {
+                if solution(b, steps, found) { break w }
+                
+                if found.insert(b).inserted {
+                    next.insert(b)
+                }
+            }
+        }
+        
+        current = next
+    }
 }

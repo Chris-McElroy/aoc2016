@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CryptoKit
 
 func day05() {
     let input = inputLines(5)[0]
@@ -16,7 +15,7 @@ func day05() {
     var n = 1
     
     while n < 100000000 {
-        let hash = Insecure.MD5.hash(data: (input+String( n)).data(using: .utf8)!).description.dropFirst(12)
+        let hash = MD5(of: input+String(n))
 
         if hash.hasPrefix("00000") {
             if a1.count < 8 {

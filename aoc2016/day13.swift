@@ -10,10 +10,6 @@ import Foundation
 func day13() {
     let input = inputInts(13)[0]
     
-    var history: Set<C2> = []
-    var options: Set<C2> = [C2(1, 1)]
-    var steps = 0
-    
     var a1 = 0
     var a2 = 0
     
@@ -31,25 +27,13 @@ func day13() {
         return ones % 2 == 0
     }
     
-    while steps < 50 || !history.contains(C2(31, 39)) {
-        steps += 1
-        var newOptions: Set<C2> = []
-        
-        for var option in options {
-            for adj in option.adjacents {
-                if isOpen(adj) {
-                    if history.insert(adj).inserted {
-                        newOptions.insert(adj)
-                    }
-                }
-            }
-        }
-        
-        options = newOptions
-        
-        if history.contains(C2(31, 39)) && a1 == 0 { a1 = steps }
-        if steps == 50 { a2 = history.count }
-    }
+    bfs(from: [C2(1, 1)], with: { $0.adjacents.filter(isOpen) }, while: {
+        if $1.contains(C2(31, 39)) && a1 == 0 { a1 = $0 }
+        if $0 == 50 { a2 = $1.count }
+
+        return a1 == 0 || a2 == 0
+    })
     
     print(a1, a2)
 }
+// 90 135
