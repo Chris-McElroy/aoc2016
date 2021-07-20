@@ -14,7 +14,6 @@ func day18() {
 	for c in input {
 		row.append(c == "^")
 	}
-	
 	for _ in 0..<400000 {
 		var nextRow: [Bool] = []
 		for i in 0..<row.count {
