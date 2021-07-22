@@ -38,7 +38,7 @@ func day21() {
 					
 					print("was", newP)
 					
-					let i = newP.firstIndex(of: line[6][0])!.utf16Offset(in: newP)
+					let i = newP.firstIndex(of: line[6][0])!
 					let d = (i >= 4 ? i + 2 : i + 1) % newP.count
 					if password == String(newP.last(d) + newP.dropLast(d)) {
 						print("yes")
@@ -56,7 +56,7 @@ func day21() {
 			let y = Int(line[5])!
 			let c = password[y]
 			password = password.filter { $0 != c }
-			password.insert(c, at: password.index(password.startIndex, offsetBy: x))
+			password.insert(c, x)
 		}
 	}
 	

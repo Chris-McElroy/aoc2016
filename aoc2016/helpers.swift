@@ -194,6 +194,10 @@ public extension String {
     func slice(from start: Int, through end: Int, by k: Int) -> Self {
         return slice(from: start, to: end+1, by: k)
     }
+	
+	func firstIndex(of element: Character) -> Int? {
+		firstIndex(of: element)?.utf16Offset(in: self)
+	}
 }
 
 public extension StringProtocol {
@@ -273,6 +277,10 @@ extension RangeReplaceableCollection {
         guard let first = first else { return [] }
         return dropFirst().uniqueCombinations(of: n - 1).map { CollectionOfOne(first) + $0 } + dropFirst().uniqueCombinations(of: n)
     }
+	
+	mutating func insert(_ newElement: Self.Element, _ i: Int) {
+		self.insert(newElement, at: index(self.startIndex, offsetBy: i))
+	}
 }
 
 // permutations from https://stackoverflow.com/questions/34968470/calculate-all-permutations-of-a-string-in-swift
@@ -450,12 +458,12 @@ func MD5(of string: String) -> String {
     String(Insecure.MD5.hash(data: (string).data(using: .utf8)!).description.dropFirst(12))
 }
 
-func bfs<T>(for solution: ((T, Int, Set<T>) -> Bool) = { _,_,_ in false }, from start: Set<T>, with search: (T) -> [T], while valid: (Int, Set<T>) -> Bool) {
+func bfs<T>(startingWith start: Set<T>, searchFor solution: ((T, Int, Set<T>) -> Bool) = { _,_,_ in false }, expandUsing search: (T) -> [T], continueWhile shouldContinue: (Int, Set<T>) -> Bool) {
     var steps = 0
     var found: Set<T> = []
     var current: Set<T> = start
     
-    w: while valid(steps, found) {
+    w: while shouldContinue(steps, found) {
         steps += 1
         var next: Set<T> = []
         

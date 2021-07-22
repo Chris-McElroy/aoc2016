@@ -27,7 +27,7 @@ func day13() {
         return ones % 2 == 0
     }
     
-    bfs(from: [C2(1, 1)], with: { $0.adjacents.filter(isOpen) }, while: {
+    bfs(startingWith: [C2(1, 1)], expandUsing: { $0.adjacents.filter(isOpen) }, continueWhile: {
         if $1.contains(C2(31, 39)) && a1 == 0 { a1 = $0 }
         if $0 == 50 { a2 = $1.count }
 

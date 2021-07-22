@@ -15,16 +15,16 @@ func day24() {
 		var pos: C2
 	}
 	
-	let startX = input.first(where: { $0.contains("0") })!.firstIndex(of: "0")!.utf16Offset(in: input[0])
-	let startY = input.enumerated().first(where: { $0.element.contains("0") })!.offset
+	let startY = input.firstIndex(where: { $0.contains("0") })!
+	let startX = input[startY].firstIndex(of: "0")!
 	
-	bfs(for: { state, steps, _ in
+	bfs(startingWith: [State(seen: [0], pos: C2(startX, startY))], searchFor: { state, steps, _ in
 		if (state.seen.count == 8) && state.pos == C2(startX, startY) {
 			print(state, steps)
 			return true
 		}
 		return false
-	}, from: [State(seen: [0], pos: C2(startX, startY))], with: { state in
+	}, expandUsing: { state in
 		var nextStates: [State] = []
 		for loc in state.pos.adjacents {
 			var newState = state
@@ -37,6 +37,6 @@ func day24() {
 			}
 		}
 		return nextStates
-	}, while: { len, _ in len < 10000 })
+	}, continueWhile: { len, _ in len < 10000 })
 }
 // 250 too low

@@ -9,7 +9,7 @@ import Foundation
 
 func day20() {
 	let input = inputLines(20)
-	var blacklist: [[Int]] = input.map { $0.split(separator: "-").map({ Int($0)! }) }.sorted(by: { $0[0] < $1[0] })
+	let blacklist: [[Int]] = input.map { $0.split(separator: "-").map({ Int($0)! }) }.sorted(by: { $0[0] < $1[0] })
 	var lowest = 0
 	var allowed = 0
 	for r in blacklist { // where r[0] <= lowest {

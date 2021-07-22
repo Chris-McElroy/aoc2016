@@ -10,7 +10,7 @@ import Foundation
 func day17() {
 	let passcode = "mmsxrhfx"
 	var count = 0
-	bfs(for: { path, _, _ in
+	bfs(startingWith: [""], searchFor: { path, _, _ in
 		var loc = C2(0,0)
 		for c in path {
 			switch c {
@@ -26,7 +26,7 @@ func day17() {
 			count += 1
 		}
 		return false
-	}, from: [""], with: { path in
+	}, expandUsing: { path in
 		var loc = C2(0,0)
 		for c in path {
 			switch c {
@@ -53,7 +53,7 @@ func day17() {
 			}
 		}
 		return nextSteps
-	}, while: { n, paths in
+	}, continueWhile: { n, paths in
 		// print(paths.count)
 		return n < 10000
 	})
